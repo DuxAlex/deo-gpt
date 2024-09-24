@@ -2,19 +2,24 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
 import openai
+from dotenv import load_dotenv
+
+# Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
+
+# Obtém a chave da API do OpenAI a partir das variáveis de ambiente
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 CORS(app)  # Habilita CORS para todas as rotas
 
-# Substitua pela sua chave da API OpenAI
-chave_api = "sk-_xHx6zqyzbszOdxt6SaVJM_Mxi3YZHhO8LLjVPaivPT3BlbkFJ9VPhLeYU7XD3gZqV4xXF7XA5cCGf882RvwTgNmbLYA"
-openai.api_key = chave_api
+# Configura a chave da API do OpenAI
+openai.api_key = openai_api_key
 
 # Lista para armazenar o histórico de mensagens
 lista_mensagens = [
     {"role": "system", "content": "Você é um chatbot projetado para ajudar pessoas com questões relacionadas ao autismo."}
 ]
-
 @app.route('/enviar', methods=['POST'])
 def enviar():
     data = request.get_json()
