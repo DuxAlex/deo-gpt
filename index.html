@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Deo GPT</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Deo GPT</h1>
+            <p>Um chatbot projetado para ajudar pessoas com questões relacionadas ao autismo.</p>
+        </header>
+        <main>
+            <div class="chat-container">
+                <div id="chat-box"></div>
+                <textarea id="user-input" placeholder="Digite sua mensagem..."></textarea>
+                <button id="send-button">Enviar</button>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2024 Deo GPT. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        const sendButton = document.getElementById('send-button');
+        const userInput = document.getElementById('user-input');
+        const chatBox = document.getElementById('chat-box');
+
+        sendButton.addEventListener('click', async () => {
+            const message = userInput.value;
+            if (message) {
+                chatBox.innerHTML += `<div class="user-message">${message}</div>`;
+                userInput.value = '';
+
+                const response = await fetch('http://127.0.0.1:5000/enviar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message })
+                });
+
+                const data = await response.json();
+                chatBox.innerHTML += `<div class="bot-message">${data.message}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight; // Rola para baixo
+            }
+        });
+    </script>
+</body>
+</html>

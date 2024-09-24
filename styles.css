@@ -1,0 +1,115 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fonte divertida */
+    background-color: #e0f7fa; /* Azul claro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: #ffffff; /* Fundo branco */
+    border-radius: 20px; /* Cantos arredondados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(90deg, #00796b, #26a69a); /* Gradiente verde */
+    color: #ffffff; /* Texto branco */
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+    animation: fadeIn 0.5s; /* Animação de entrada */
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em; /* Aumenta o tamanho da fonte */
+}
+
+p {
+    margin: 10px 0 0;
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    border: 2px solid #00796b; /* Verde escuro */
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+}
+
+#chat-box {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #f1f8e9; /* Verde claro */
+    border-radius: 10px;
+}
+
+#user-input {
+    padding: 10px;
+    border: 2px solid #00796b; /* Verde escuro */
+    border-radius: 0 0 0 10px;
+    resize: none; /* Impede redimensionar */
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+}
+
+#send-button {
+    padding: 10px;
+    background: #00796b;
+    color: #ffffff;
+    border: none;
+    border-radius: 0 0 10px 0;
+    cursor: pointer;
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+    transition: background 0.3s; /* Transição suave */
+}
+
+#send-button:hover {
+    background: #004d40; /* Verde escuro ao passar o mouse */
+}
+
+.user-message {
+    background: #b2ebf2; /* Azul claro */
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    max-width: 70%;
+    animation: slideIn 0.3s; /* Animação de entrada */
+}
+
+.bot-message {
+    background: #ffcdd2; /* Vermelho claro */
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    max-width: 70%;
+    animation: slideIn 0.3s; /* Animação de entrada */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #00796b; /* Verde escuro */
+    color: white;
+    border-radius: 0 0 20px 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
